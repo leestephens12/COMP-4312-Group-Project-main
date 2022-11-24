@@ -79,12 +79,6 @@ footer h1 {
   border-radius: 10px;
 }
 
-.images img:hover {
-  width: 77%;
-  height: 77%;
-  filter: grayscale(50%)
-}
-
 .instructions figure {
   overflow: auto;
   margin-top: 20px;
