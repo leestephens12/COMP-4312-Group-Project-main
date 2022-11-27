@@ -11,7 +11,7 @@ var editText = document.getElementById("editText");
 function hovering(x) {
     editText.style.display = "block";
     editText.style.textAlign = "center";
-    editText.innerHTML = "Click to Edit!";
+    editText.innerHTML = "Click to upload a photo!";
 }
 
 function nonhover(x) {
@@ -43,4 +43,13 @@ function show(n) {
 
     slides[index-1].style.display = "block";
     console.log(index);
+}
+
+// thanks to Brian Burns for explaining how to preview uploaded files (https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded) 
+function previewFile(n) {
+    var output = document.getElementById('slide1');
+    output.src = URL.createObjectURL(n.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
 }
