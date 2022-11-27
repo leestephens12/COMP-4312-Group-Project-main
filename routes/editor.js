@@ -16,15 +16,38 @@ function imageHandler(req, res, appliedFilter) {
   else { // files uploaded
     var image = req.files.fileUpload;
     var acceptedMimeTypes = ['image/apng', 'image/bmp', 'image/gif', 'image/x-icon', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/webp'];
+    let usedFilter = "";
 
     if (acceptedMimeTypes.includes(image.mimetype)) { // check if the file is an image
-      /* *************************************************
-        
-            Do Image filtering stuff here
-            (included passed variable "appliedFilter" 
-            for ease of use here)
+      switch (appliedFilter) {
+        case "filter1":
+          usedFilter = "blur";
+          break;
       
-      ************************************************* */
+        case "filter2":
+          usedFilter = "hue-rotate";
+          break;
+
+        case "filter3":
+        usedFilter = "drop-shadow";
+        break;
+
+        case "filter4":
+        usedFilter = "greyscale";
+        break;
+
+        case "filter5":
+        usedFilter = "sepia";
+        break;
+
+        case "filter6":
+        usedFilter = "invert";
+        break;  
+        
+        default:
+          usedFilter = "hue-rotate";
+          break;
+      }
 
       image.name = Date.now().toString() + '_' + image.name; // uniquely rename file to current date + prev. image name
       image.mv(path.join(__dirname, '../public/images/uploaded', image.name), (err) => { // move image to uploads
@@ -32,7 +55,7 @@ function imageHandler(req, res, appliedFilter) {
 					res.render('error', { message: 'There was an error!', error: err });
 				}
 				else { // if successfully moved, redirect to results page
-          res.render('results', { url: image.name });
+          res.render('results', { url: image.name, filter: usedFilter });
 				}
 			});
     }

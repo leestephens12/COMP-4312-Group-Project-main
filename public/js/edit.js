@@ -7,6 +7,7 @@ var imgFour = document.getElementById("slide4");
 var imgFive = document.getElementById("slide5");
 var imgSix = document.getElementById("slide6");
 var editText = document.getElementById("editText");
+import domtoimage from 'dom-to-image';
 
 function hovering(x) {
     editText.style.display = "block";
@@ -52,4 +53,17 @@ function previewFile(n) {
     output.onload = function() {
       URL.revokeObjectURL(output.src) // free memory
     }
+}
+
+function convertPng(){
+    let node = document.getElementById('my-node');
+    domtoimage.toPng(node)
+    .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        document.body.appendChild(img);
+    })
+    .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+    });
 }

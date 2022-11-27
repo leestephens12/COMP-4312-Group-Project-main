@@ -6,9 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@amoy/filters": "^3.0.31",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dom-to-image": "^2.6.0",
     "express": "~4.16.1",
     "express-fileupload": "^1.4.0",
     "hbs": "~4.0.4",
