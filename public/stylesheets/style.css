@@ -169,10 +169,11 @@ figure figcaption {
   display: none;
 }
 
+.resultWindow {
+  height: 500px;
+}
 
-
-
-
-
-
-
+#resultBtn {
+  float: right;
+  margin-right: 40px;
+}
